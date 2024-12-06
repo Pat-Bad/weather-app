@@ -82,10 +82,10 @@ const ProvaApi = ({ onClose, city }) => {
       xs={12}
       md={6}
     >
-      <Card className="bg-primary mx-5 my-5 ">
+      <Card className="bg-primary mx-5 my-5 border-0 rounded">
         <Card.Img
           variant="top"
-          src={apiCall.weather[0].icon}
+          src="https://wmo.int/sites/default/files/2023-12/thumbnails_5.jpg"
           alt="weather icon"
         />
         <Card.Body className="Card-background">
@@ -96,23 +96,26 @@ const ProvaApi = ({ onClose, city }) => {
             <h4>{apiCall.weather[0].main}</h4>
 
             <p>
-              {convertDegrees(apiCall.main.temp)}°C but it feels like{" "}
-              {convertDegrees(apiCall.main.feels_like)}°C
+              It's {convertDegrees(apiCall.main.temp)}°C but it feels like{" "}
+              {convertDegrees(apiCall.main.feels_like)}°C 😊
             </p>
-            <p>
+            <p className="border border-2 rounded-pill mx-0">
               Min temp. {convertDegrees(apiCall.main.temp_min)}°C - Max temp.{" "}
               {convertDegrees(apiCall.main.temp_max)}°C
             </p>
             <p>Humidity levels are at {apiCall.main.humidity}%</p>
-            <p>What about the wind?</p>
+            <p>🎐 What about the wind? 🎐</p>
             <p>
               Well... brace yourself! Its speed is at {apiCall.wind.speed} {""}
               m/s
             </p>
-            <h5>In the next few hours</h5>
-            {apiCall2.slice(0, 5).map((hour, i) => {
-              return <p key={i}> {hour.weather[0].description}</p>;
-            })}
+            <h5>
+              In the next few hours...
+              {apiCall2 &&
+                apiCall2.list.slice(0, 1).map((hour, i) => {
+                  return <p key={i}> {hour.weather[0].description}!</p>;
+                })}
+            </h5>
           </Card.Text>
           <Button
             variant="danger"

@@ -7,16 +7,15 @@ import MyFooter from "./Components/MyFooter";
 
 function App() {
   return (
-    <div className="App h-100vh nunito-carattere">
+    <div className="App h-100 nunito-carattere">
       <header>
         <CustomHeader />
       </header>
-      <main>
-        <Container className="d-flex flex-wrap">
+      <main className="h-100vh">
+        <Container className="fluid d-flex flex-wrap h-100">
           <Row className="d-flex flex-wrap">
             <Col
               xs={12}
-              md={8}
               className="d-flex flex-wrap"
             >
               <WeatherCard city="Milan" />
@@ -43,3 +42,5 @@ function App() {
 }
 
 export default App;
+
+//perché non vedo l'icona?..............
