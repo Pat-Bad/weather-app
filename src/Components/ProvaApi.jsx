@@ -121,6 +121,7 @@ const ProvaApi = ({ onClose, city }) => {
           <Button
             variant="danger"
             onClick={onClose}
+            className="m-1 px-2"
           >
             X
           </Button>
@@ -128,7 +129,7 @@ const ProvaApi = ({ onClose, city }) => {
             variant="primary"
             className="ms-2"
           >
-            Let's go back in time...
+            Let's go back in time
           </Button>
         </Card.Body>
       </Card>
