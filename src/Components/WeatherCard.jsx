@@ -15,7 +15,14 @@ const WeatherCard = ({ city }) => {
 
   return (
     <>
-      {!showCard && <Button onClick={handleClick}>{city}</Button>}
+      {!showCard && (
+        <Button
+          onClick={handleClick}
+          className="mx-5 my-5"
+        >
+          {city}
+        </Button>
+      )}
       {showCard && (
         <ProvaApi
           city={city}

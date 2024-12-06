@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Alert, Button, Card, Spinner } from "react-bootstrap";
+import { Alert, Button, Card, Spinner, Col } from "react-bootstrap";
 
 const ProvaApi = ({ onClose, city }) => {
   const [apiCall, setApiCall] = useState(null); //RICEVO UN OGGETTO!
@@ -36,7 +36,12 @@ const ProvaApi = ({ onClose, city }) => {
   };
   if (error) {
     return (
-      <Alert variant={"warning"}>Errore! Ritenta e sarai più fortunat*!</Alert>
+      <Alert
+        variant={"warning"}
+        className="mx-3 my-3"
+      >
+        Errore! Ritenta e sarai più fortunat*!
+      </Alert>
     );
   }
 
@@ -51,13 +56,17 @@ const ProvaApi = ({ onClose, city }) => {
     );
   }
   return (
-    <div>
-      <Card>
+    <Col
+      xs={12}
+      md={6}
+    >
+      <Card className="bg-primary mx-5 my-5 ">
         <Card.Img
           variant="top"
           src={apiCall.weather[0].icon}
+          alt="weather icon"
         />
-        <Card.Body>
+        <Card.Body className="Card-background">
           <Card.Title>
             <h1>{apiCall.name}</h1>
           </Card.Title>
@@ -88,7 +97,7 @@ const ProvaApi = ({ onClose, city }) => {
           <Button variant="primary">Let's go back in time...</Button>
         </Card.Body>
       </Card>
-    </div>
+    </Col>
   );
 };
 
