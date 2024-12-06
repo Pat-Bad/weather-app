@@ -1,6 +1,5 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ProvaApi from "./Components/ProvaApi";
 import { Container, Row, Col } from "react-bootstrap";
 import CustomHeader from "./Components/CustomHeader";
 import WeatherCard from "./Components/WeatherCard";

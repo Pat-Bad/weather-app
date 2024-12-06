@@ -1,5 +1,3 @@
-import { ListGroup } from "react-bootstrap";
-
 const MyFooter = () => {
   return (
     <p className="bg-primary mb-0">

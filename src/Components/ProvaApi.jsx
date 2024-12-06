@@ -3,6 +3,7 @@ import { Alert, Button, Card, Spinner, Col } from "react-bootstrap";
 
 const ProvaApi = ({ onClose, city }) => {
   const [apiCall, setApiCall] = useState(null); //RICEVO UN OGGETTO!
+  const [apiCall2, setApiCall2] = useState(null);
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -29,6 +30,27 @@ const ProvaApi = ({ onClose, city }) => {
         setError(true);
         setIsLoading(false);
       });
+
+    fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=b4ca4daa573ac5284d06732627e596c4`
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error();
+        }
+      })
+      .then((hourlyData) => {
+        console.log(hourlyData);
+        setApiCall2(hourlyData);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log("Errore!", err);
+        setError(true);
+        setIsLoading(false);
+      });
   }, [city]);
 
   const convertDegrees = (kelvin) => {
@@ -45,7 +67,7 @@ const ProvaApi = ({ onClose, city }) => {
     );
   }
 
-  if (isLoading) {
+  if (isLoading || !apiCall2) {
     return (
       <Spinner
         animation="border"
@@ -87,6 +109,10 @@ const ProvaApi = ({ onClose, city }) => {
               Well... brace yourself! Its speed is at {apiCall.wind.speed} {""}
               m/s
             </p>
+            <h5>In the next few hours</h5>
+            {apiCall2.slice(0, 5).map((hour, i) => {
+              return <p key={i}> {hour.weather[0].description}</p>;
+            })}
           </Card.Text>
           <Button
             variant="danger"
@@ -94,7 +120,12 @@ const ProvaApi = ({ onClose, city }) => {
           >
             X
           </Button>
-          <Button variant="primary">Let's go back in time...</Button>
+          <Button
+            variant="primary"
+            className="ms-2"
+          >
+            Let's go back in time...
+          </Button>
         </Card.Body>
       </Card>
     </Col>
