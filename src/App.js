@@ -19,6 +19,7 @@ function App() {
               className="d-flex flex-wrap"
             >
               <WeatherCard city="Milan" />
+
               <WeatherCard city="Rome" />
               <WeatherCard city="Tokyo" />
               <WeatherCard city="Seoul" />

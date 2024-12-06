@@ -56,6 +56,7 @@ const ProvaApi = ({ onClose, city }) => {
   const convertDegrees = (kelvin) => {
     return (kelvin - 273.15).toFixed(2);
   };
+
   if (error) {
     return (
       <Alert
